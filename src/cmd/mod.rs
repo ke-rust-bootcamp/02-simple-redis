@@ -1,5 +1,6 @@
 mod hmap;
 mod map;
+mod sth;
 
 use crate::{Backend, RespArray, RespError, RespFrame, SimpleString};
 use enum_dispatch::enum_dispatch;
@@ -36,6 +37,9 @@ pub enum Command {
     HGet(HGet),
     HSet(HSet),
     HGetAll(HGetAll),
+    // HMGet(HMGet),
+    Echo(Echo),
+
     // unrecognized command
     Unrecognized(Unrecognized),
 }
@@ -68,6 +72,11 @@ pub struct HSet {
 pub struct HGetAll {
     key: String,
     sort: bool,
+}
+
+#[derive(Debug)]
+pub struct Echo {
+    key: String,
 }
 
 #[derive(Debug)]
